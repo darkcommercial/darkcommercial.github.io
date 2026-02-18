@@ -61,12 +61,35 @@ body{
 }
 
 .panel{
+  position:relative;
   border-radius: var(--radius);
   background: var(--panel);
   border: 1px solid var(--panelBorder);
   box-shadow: var(--shadow);
   overflow:hidden;
   backdrop-filter: blur(10px);
+}
+
+/* spectral edge — extremely subtle */
+.panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+
+  background:
+    radial-gradient(120% 140% at 18% 10%, rgba(0,200,255,.10), transparent 40%),
+    radial-gradient(120% 140% at 85% 90%, rgba(255,40,80,.08), transparent 45%);
+
+  mix-blend-mode:screen;
+  opacity:.22;
+}
+
+/* keeps content crisp above tint */
+.panel > *{
+  position:relative;
+  z-index:1;
 }
 
 .inner{
