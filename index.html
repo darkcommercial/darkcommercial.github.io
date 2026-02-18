@@ -8,13 +8,18 @@
 
   <style>
     :root{
-      --bg:#070910;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --rule: rgba(255,255,255,.14);
-      --shadow: 0 30px 90px rgba(0,0,0,.55);
+      /* tuned to your logo (neon cyan + red on charcoal) */
+      --bg0:#04060b;
+      --bg1:#060a12;
+      --ink:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+      --rule:rgba(255,255,255,.14);
+
+      /* calmer panel */
+      --panel:rgba(10,12,18,.72);
+      --panelBorder:rgba(255,255,255,.10);
+      --shadow: 0 28px 80px rgba(0,0,0,.60);
+
       --radius: 22px;
     }
 
@@ -23,12 +28,14 @@
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
-      color:var(--text);
+      color:var(--ink);
+
+      /* subtle “neon spill” that matches your sign */
       background:
-        radial-gradient(900px 600px at 20% 0%, rgba(0,210,255,.18), transparent 60%),
-        radial-gradient(900px 650px at 85% 15%, rgba(120,90,255,.18), transparent 62%),
-        radial-gradient(900px 650px at 50% 105%, rgba(255,0,90,.10), transparent 62%),
-        linear-gradient(180deg, #050611, var(--bg));
+        radial-gradient(900px 650px at 50% 14%, rgba(0,190,255,.22), transparent 58%),
+        radial-gradient(800px 520px at 48% 8%, rgba(255,40,90,.14), transparent 60%),
+        radial-gradient(1200px 900px at 50% 110%, rgba(0,190,255,.10), transparent 62%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
     .wrap{
@@ -36,56 +43,56 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:64px 22px;
+      padding:64px 22px 54px;
     }
 
-    .frame{
-      width:min(1040px, 100%);
-    }
+    .frame{ width:min(980px, 100%); }
 
-    /* top mark */
     .mark{
       display:flex;
       justify-content:center;
-      margin: 0 0 22px 0;
+      margin: 0 0 26px 0;
     }
+
     .logo{
       width:min(560px, 92%);
       height:auto;
       display:block;
       border-radius:14px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.55);
+      box-shadow: 0 18px 55px rgba(0,0,0,.62);
     }
 
-    /* main panel */
+    /* clean, quiet panel */
     .panel{
       border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,.03));
+      background: var(--panel);
+      border: 1px solid var(--panelBorder);
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.10);
       overflow:hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .inner{
-      padding: 44px 52px;
+      padding: 42px 52px;
     }
 
-    .title{
+    .titleRow{
       display:flex;
       align-items:baseline;
       justify-content:space-between;
       gap:18px;
-      margin-bottom: 18px;
       padding-bottom: 18px;
       border-bottom: 1px solid var(--rule);
+      margin-bottom: 18px;
     }
 
     h1{
       margin:0;
-      font-size: 42px;
+      font-size: 40px;
       line-height:1.05;
       letter-spacing:-0.03em;
-      font-weight: 750;
+      font-weight: 760;
     }
 
     .tag{
@@ -96,80 +103,40 @@
       white-space: nowrap;
     }
 
-    .lede{
-      margin: 0 0 22px 0;
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--text);
-      max-width: 70ch;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 26px;
-      margin-top: 18px;
-    }
-
-    .block{
-      border-radius: 18px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 18px 18px;
-    }
-
-    .kicker{
-      margin:0 0 10px 0;
-      font-size: 12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--muted);
-      font-weight:700;
-    }
-
-    .copy p{
-      margin:0 0 10px 0;
-      font-size: 16px;
+    p{
+      margin:0 0 12px 0;
+      font-size: 17px;
       line-height: 1.75;
-      color: var(--text);
+      color: var(--ink);
+      max-width: 74ch;
     }
 
-    .chips{
+    .meta{
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 12px;
-    }
-    .chip{
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.82);
-      font-size: 13px;
-      line-height: 1;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
     }
 
     a{
-      color: inherit;
-      text-decoration: none;
+      color: var(--ink);
+      text-decoration:none;
       border-bottom: 1px solid rgba(255,255,255,.35);
       padding-bottom: 1px;
     }
     a:hover{ border-bottom-color: rgba(255,255,255,.9); }
 
-    .contact{
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--text);
-    }
-    .muted{ color: var(--muted); }
-
     .footer{
       display:flex;
       justify-content:space-between;
       gap:12px;
-      color: rgba(255,255,255,.55);
+      color: rgba(255,255,255,.50);
       font-size: 12px;
       margin-top: 14px;
       padding: 0 6px;
@@ -177,9 +144,9 @@
 
     @media (max-width: 860px){
       .inner{ padding: 34px 22px; }
-      h1{ font-size: 34px; }
-      .title{ flex-direction:column; align-items:flex-start; }
-      .grid{ grid-template-columns: 1fr; }
+      h1{ font-size: 32px; }
+      .titleRow{ flex-direction:column; align-items:flex-start; }
+      .meta{ flex-direction:column; }
       .footer{ flex-direction:column; }
     }
   </style>
@@ -196,41 +163,28 @@
       <div class="panel">
         <div class="inner">
 
-          <div class="title">
+          <div class="titleRow">
             <h1>Dark Commercial, LLC</h1>
             <div class="tag">Independent IP Studio</div>
           </div>
 
-          <p class="lede">
-            Origination, production, and licensing of authored narrative works and systems.
-          </p>
+          <p>Independent intellectual property studio.</p>
+          <p>Origination, production, and licensing of authored narrative works and systems.</p>
+          <p>Projects in development.</p>
 
-          <div class="grid">
-            <div class="block copy">
-              <p><strong>Projects in development.</strong></p>
-              <p class="muted">Selected projects and systems available on request.</p>
-
-              <div class="chips" aria-label="Focus areas">
-                <div class="chip">Feature</div>
-                <div class="chip">Series</div>
-                <div class="chip">Horror</div>
-                <div class="chip">Thriller</div>
-                <div class="chip">Action-Comedy</div>
-                <div class="chip">Children’s Formats</div>
-                <div class="chip">Narrative Systems</div>
+          <div class="meta">
+            <div>
+              <div style="letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-bottom:6px;color:rgba(255,255,255,.62);">
+                Contact
               </div>
+              <a href="mailto:contact@darkcommercial.com">contact@darkcommercial.com</a>
             </div>
 
-            <div class="block">
-              <div class="kicker">Contact</div>
-              <div class="contact">
-                <a href="mailto:contact@darkcommercial.com">contact@darkcommercial.com</a><br />
-                <span class="muted">United States</span>
+            <div>
+              <div style="letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-bottom:6px;color:rgba(255,255,255,.62);">
+                United States
               </div>
-
-              <div style="height:14px"></div>
-              <div class="kicker">Status</div>
-              <div class="contact muted">Available for select partnerships.</div>
+              <div>Available for select partnerships.</div>
             </div>
           </div>
 
