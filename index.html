@@ -1,93 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dark Commercial, LLC</title>
-  <meta name="description" content="Independent intellectual property studio. Origination, production, and licensing of authored narrative works and systems." />
-  <style>
-    :root{
-      --text:#0b0b0b;
-      --muted:#3a3a3a;
-      --rule:#e8e8e8;
-    }
-    body{
-      margin:0;
-      background:#fff;
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-      line-height:1.55;
-    }
-    .wrap{
-      max-width:760px;
-      margin:0 auto;
-      padding:88px 28px 96px;
-    }
-    .card{
-      max-width:640px;
-    }
-    .logo{
-      width:100%;
-      max-width:420px;
-      height:auto;
-      display:block;
-      margin:0 0 34px 0;
-    }
-    h1{
-      font-size:34px;
-      letter-spacing:-0.02em;
-      font-weight:650;
-      margin:0 0 20px 0;
-    }
-    p{
-      font-size:17px;
-      margin:0 0 14px 0;
-      color:var(--text);
-    }
-    .meta{
-      margin-top:34px;
-      padding-top:18px;
-      border-top:1px solid var(--rule);
-      font-size:14px;
-      color:var(--muted);
-    }
-    .label{
-      display:block;
-      margin:0 0 6px 0;
-      letter-spacing:0.02em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:var(--muted);
-    }
-    a{
-      color:inherit;
-      text-decoration:none;
-      border-bottom:1px solid #bdbdbd;
-    }
-    a:hover{ border-bottom-color:#000; }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Dark Commercial, LLC</title>
+<meta name="description" content="Independent intellectual property studio. Origination, production, and licensing of authored narrative works and systems."/>
+
+<style>
+:root{
+  --text:#0b0b0b;
+  --muted:#4a4a4a;
+  --rule:#e6e6e6;
+}
+
+html,body{
+  margin:0;
+  background:#f5f5f5;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.55;
+}
+
+/* page frame */
+.wrap{
+  max-width:880px;
+  margin:0 auto;
+  padding:120px 28px 140px;
+}
+
+/* card */
+.card{
+  background:white;
+  padding:60px 64px 70px;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+/* logo */
+.logo{
+  display:block;
+  max-width:420px;
+  width:100%;
+  height:auto;
+  margin:0 0 40px 0;
+}
+
+/* typography */
+h1{
+  font-size:34px;
+  font-weight:650;
+  letter-spacing:-0.02em;
+  margin:0 0 22px 0;
+}
+
+p{
+  font-size:17px;
+  margin:0 0 14px 0;
+}
+
+.meta{
+  margin-top:40px;
+  padding-top:18px;
+  border-top:1px solid var(--rule);
+  color:var(--muted);
+  font-size:14px;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid #bbb;
+}
+
+a:hover{
+  border-bottom-color:#000;
+}
+
+/* mobile */
+@media (max-width:600px){
+  .card{
+    padding:42px 28px 48px;
+  }
+  .wrap{
+    padding:80px 18px 100px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <main class="wrap">
-    <section class="card">
-      <img class="logo" src="logo.jpg" alt="Dark Commercial logo" />
+<div class="wrap">
+  <div class="card">
 
-      <h1>Dark Commercial, LLC</h1>
+    <img class="logo" src="logo.jpg" alt="Dark Commercial logo"/>
 
-      <p>Independent intellectual property studio.</p>
-      <p>Origination, production, and licensing of authored narrative works and systems.</p>
-      <p>Projects in development.</p>
+    <h1>Dark Commercial, LLC</h1>
 
-      <div class="meta">
-        <span class="label">Contact</span>
-        <a href="mailto:contact@darkcommercial.com">contact@darkcommercial.com</a>
-        <div style="height:14px"></div>
-        <span class="label">United States</span>
-      </div>
-    </section>
-  </main>
+    <p>Independent intellectual property studio.</p>
+    <p>Origination, production, and licensing of authored narrative works and systems.</p>
+    <p>Projects in development.</p>
+
+    <div class="meta">
+      Contact<br/>
+      <a href="mailto:contact@darkcommercial.com">contact@darkcommercial.com</a><br/><br/>
+      United States
+    </div>
+
+  </div>
+</div>
 </body>
 </html>
-
-
-
