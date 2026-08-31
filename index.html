@@ -15,12 +15,26 @@
 <style>
 
 :root{
-  --bg:#080808;
-  --ink:#f2f1ed;
-  --muted:#9d9d99;
-  --rule:#2a2a28;
-  --max:1440px;
+  --black:#040404;
+  --black-soft:#080808;
+  --surface:#0b0b0b;
+
+  --ink:#f1f0ec;
+  --muted:#92918d;
+  --muted-dark:#666561;
+
+  --rule:#242422;
+
+  --red:#e1252d;
+  --blue:#19a9d2;
+
+  --max:1380px;
 }
+
+
+/* ----------------------------------
+   RESET
+---------------------------------- */
 
 *{
   box-sizing:border-box;
@@ -32,8 +46,17 @@ html{
 
 body{
   margin:0;
-  background:var(--bg);
+
+  background:
+    radial-gradient(
+      700px 380px at 50% -60px,
+      rgba(225,37,45,.035),
+      transparent 70%
+    ),
+    var(--black);
+
   color:var(--ink);
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -41,12 +64,8 @@ body{
     Helvetica,
     Arial,
     sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
 
-a{
-  color:inherit;
-  text-decoration:none;
+  -webkit-font-smoothing:antialiased;
 }
 
 img{
@@ -54,9 +73,14 @@ img{
   max-width:100%;
 }
 
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
 
 /* ----------------------------------
-   PAGE SHELL
+   SITE
 ---------------------------------- */
 
 .site{
@@ -70,38 +94,35 @@ img{
 ---------------------------------- */
 
 .header{
-  min-height:120px;
+  height:104px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:40px;
+
   border-bottom:1px solid var(--rule);
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-}
-
-.logo{
-  width:220px;
-  height:auto;
+.wordmark{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.17em;
+  text-transform:uppercase;
 }
 
 .nav{
   display:flex;
-  align-items:center;
-  gap:34px;
+  gap:32px;
 
-  font-size:12px;
+  font-size:10px;
   font-weight:600;
-  letter-spacing:.12em;
+  letter-spacing:.17em;
   text-transform:uppercase;
 }
 
 .nav a{
   color:var(--muted);
-  transition:color .18s ease;
+  transition:color .2s ease;
 }
 
 .nav a:hover{
@@ -110,84 +131,94 @@ img{
 
 
 /* ----------------------------------
-   HERO
+   INTRO
 ---------------------------------- */
 
-.hero{
-  min-height:660px;
-  padding:82px 0 90px;
+.intro{
+  min-height:640px;
 
-  display:grid;
-  grid-template-columns:
-    minmax(120px, .5fr)
-    minmax(0, 2.3fr);
+  position:relative;
 
-  gap:64px;
-  align-content:start;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:90px 0 110px;
 }
 
-.eyebrow{
-  padding-top:13px;
 
-  font-size:11px;
-  font-weight:600;
-  line-height:1.4;
-  letter-spacing:.16em;
-  text-transform:uppercase;
+/* very restrained atmospheric light */
+
+.intro::before{
+  content:"";
+
+  position:absolute;
+
+  width:520px;
+  height:260px;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%, -68%);
+
+  background:
+    radial-gradient(
+      ellipse at 43% 50%,
+      rgba(225,37,45,.075),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 57% 50%,
+      rgba(25,169,210,.07),
+      transparent 58%
+    );
+
+  filter:blur(36px);
+
+  pointer-events:none;
+}
+
+.hero-logo{
+  position:relative;
+  z-index:1;
+
+  width:min(360px, 78vw);
+  height:auto;
+
+  margin-bottom:68px;
+}
+
+.intro-copy{
+  position:relative;
+  z-index:1;
+
+  max-width:760px;
+
+  font-size:clamp(24px, 2.2vw, 34px);
+  line-height:1.28;
+  letter-spacing:-.025em;
+  font-weight:400;
+}
+
+.intro-copy .muted{
   color:var(--muted);
 }
 
-.hero h1{
-  margin:0;
+.scroll-mark{
+  position:absolute;
+  bottom:34px;
+  left:50%;
 
-  max-width:1000px;
+  transform:translateX(-50%);
 
-  font-size:clamp(52px, 6.6vw, 104px);
-  line-height:.96;
-  letter-spacing:-.052em;
-  font-weight:500;
-}
+  font-size:18px;
+  font-weight:300;
 
-.hero h1 span{
-  color:var(--muted);
-}
-
-
-/* ----------------------------------
-   SECTION SHARED
----------------------------------- */
-
-.section{
-  border-top:1px solid var(--rule);
-  padding:30px 0 120px;
-}
-
-.section-head{
-  display:grid;
-  grid-template-columns:
-    minmax(120px, .5fr)
-    minmax(0, 2.3fr);
-
-  gap:64px;
-
-  margin-bottom:72px;
-}
-
-.section-label{
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-
-.section-title{
-  margin:0;
-
-  font-size:clamp(28px, 3.2vw, 48px);
-  line-height:1.05;
-  letter-spacing:-.035em;
-  font-weight:500;
+  color:var(--muted-dark);
 }
 
 
@@ -196,70 +227,169 @@ img{
 ---------------------------------- */
 
 .property{
-  display:grid;
-  grid-template-columns:
-    minmax(120px, .5fr)
-    minmax(0, 1.45fr)
-    minmax(220px, .85fr);
-
-  gap:64px;
-
-  padding:38px 0;
   border-top:1px solid var(--rule);
+
+  padding:34px 0 140px;
 }
 
-.property-number{
-  font-size:12px;
+.property-top{
+  display:grid;
+
+  grid-template-columns:
+    120px
+    minmax(0, 1fr);
+
+  gap:52px;
+
+  margin-bottom:88px;
+}
+
+.property-index{
+  padding-top:6px;
+
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+
   color:var(--muted);
 }
 
-.property-main h3{
-  margin:0 0 18px;
+.property-heading{
+  margin:0;
 
-  font-size:clamp(36px, 4.5vw, 70px);
-  line-height:.98;
-  letter-spacing:-.045em;
+  font-size:clamp(52px, 6.6vw, 104px);
+  line-height:.92;
+  letter-spacing:-.055em;
+
   font-weight:500;
 }
 
-.property-main p{
-  margin:0;
-
-  max-width:650px;
-
-  font-size:18px;
-  line-height:1.55;
+.property-heading span{
   color:var(--muted);
 }
 
-.property-meta{
-  align-self:end;
 
-  font-size:12px;
-  line-height:1.75;
-  letter-spacing:.06em;
+/* ----------------------------------
+   PROPERTY BODY
+---------------------------------- */
+
+.property-body{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(290px, 430px);
+
+  gap:100px;
+
+  align-items:center;
+}
+
+.property-copy{
+  max-width:680px;
+}
+
+.kicker{
+  margin-bottom:26px;
+
+  font-size:10px;
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:.18em;
+
   text-transform:uppercase;
+
   color:var(--muted);
+}
+
+.property-copy h2{
+  margin:0 0 30px;
+
+  max-width:680px;
+
+  font-size:clamp(30px, 3.5vw, 54px);
+  line-height:1.06;
+  letter-spacing:-.04em;
+
+  font-weight:500;
+}
+
+.property-copy p{
+  margin:0;
+
+  max-width:590px;
+
+  font-size:18px;
+  line-height:1.6;
+
+  color:var(--muted);
+}
+
+.property-details{
+  margin-top:46px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:30px;
+
+  padding-top:24px;
+
+  border-top:1px solid var(--rule);
+}
+
+.detail-label{
+  margin-bottom:7px;
+
+  font-size:9px;
+  font-weight:600;
+
+  letter-spacing:.16em;
+  text-transform:uppercase;
+
+  color:var(--muted-dark);
+}
+
+.detail-value{
+  font-size:12px;
+  line-height:1.6;
+
+  color:var(--ink);
 }
 
 .property-link{
   display:inline-flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 
-  margin-top:28px;
+  margin-top:42px;
 
-  font-size:12px;
+  padding-bottom:6px;
+
+  border-bottom:1px solid var(--muted-dark);
+
+  font-size:10px;
   font-weight:600;
-  letter-spacing:.12em;
+
+  letter-spacing:.16em;
   text-transform:uppercase;
 
-  color:var(--ink);
+  transition:border-color .2s ease;
 }
 
 .property-link::after{
   content:"→";
-  transition:transform .18s ease;
+
+  font-size:14px;
+
+  transition:transform .2s ease;
+}
+
+.property-link:hover{
+  border-color:var(--ink);
 }
 
 .property-link:hover::after{
@@ -268,17 +398,211 @@ img{
 
 
 /* ----------------------------------
+   TEMPORARY BOOK OBJECT
+---------------------------------- */
+
+.book-stage{
+  min-height:610px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+}
+
+.book-stage::before{
+  content:"";
+
+  position:absolute;
+
+  width:360px;
+  height:440px;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(225,37,45,.07),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(25,169,210,.06),
+      transparent 60%
+    );
+
+  filter:blur(42px);
+}
+
+
+/*
+  Temporary cover made entirely in CSS.
+
+  Later we can replace this whole .book block with:
+  <img src="laws-of-escalation-cover.jpg" ... >
+*/
+
+.book{
+  position:relative;
+  z-index:1;
+
+  width:min(340px, 76vw);
+  aspect-ratio:2 / 3;
+
+  padding:34px 30px 30px;
+
+  display:flex;
+  flex-direction:column;
+
+  background:#050505;
+
+  border:1px solid #292929;
+
+  box-shadow:
+    22px 28px 70px rgba(0,0,0,.55),
+    -1px 0 0 rgba(255,255,255,.04);
+
+  transform:
+    perspective(1200px)
+    rotateY(-6deg)
+    rotateX(1deg);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.book-stage:hover .book{
+  transform:
+    perspective(1200px)
+    rotateY(-2deg)
+    rotateX(0deg)
+    translateY(-6px);
+
+  box-shadow:
+    26px 38px 90px rgba(0,0,0,.65);
+}
+
+.book-series{
+  font-size:7px;
+  line-height:1.5;
+
+  letter-spacing:.17em;
+  text-transform:uppercase;
+
+  color:#888;
+}
+
+.book-rule{
+  margin:19px 0 28px;
+
+  width:100%;
+  height:1px;
+
+  background:#303030;
+}
+
+.book-title{
+  font-size:clamp(30px, 3vw, 42px);
+  line-height:.93;
+
+  letter-spacing:-.055em;
+
+  font-weight:600;
+
+  text-transform:uppercase;
+}
+
+.book-title .of{
+  display:block;
+
+  margin:5px 0;
+
+  font-size:.48em;
+
+  line-height:1;
+
+  letter-spacing:.03em;
+
+  color:#888;
+}
+
+.book-space{
+  flex:1;
+}
+
+.book-author{
+  padding-top:20px;
+
+  border-top:1px solid #303030;
+
+  font-size:8px;
+  font-weight:600;
+
+  letter-spacing:.18em;
+  text-transform:uppercase;
+
+  color:#aaa;
+}
+
+
+/* thin neon trace */
+
+.book::after{
+  content:"";
+
+  position:absolute;
+
+  left:-1px;
+  right:-1px;
+  bottom:-1px;
+
+  height:2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(225,37,45,.55) 25%,
+      rgba(25,169,210,.55) 75%,
+      transparent
+    );
+
+  opacity:.4;
+}
+
+
+/* ----------------------------------
    ABOUT
 ---------------------------------- */
 
+.about{
+  border-top:1px solid var(--rule);
+
+  padding:34px 0 130px;
+}
+
 .about-grid{
   display:grid;
-  grid-template-columns:
-    minmax(120px, .5fr)
-    minmax(0, 1.45fr)
-    minmax(220px, .85fr);
 
-  gap:64px;
+  grid-template-columns:
+    120px
+    minmax(0, 1fr)
+    minmax(260px, 360px);
+
+  gap:52px;
+}
+
+.section-label{
+  padding-top:7px;
+
+  font-size:10px;
+  font-weight:600;
+
+  letter-spacing:.16em;
+  text-transform:uppercase;
+
+  color:var(--muted);
 }
 
 .about-copy{
@@ -286,22 +610,24 @@ img{
 }
 
 .about-copy p{
-  margin:0 0 24px;
+  margin:0;
 
-  font-size:clamp(24px, 2.3vw, 34px);
-  line-height:1.25;
-  letter-spacing:-.025em;
+  font-size:clamp(26px, 3vw, 44px);
+  line-height:1.16;
+  letter-spacing:-.035em;
+
   font-weight:400;
 }
 
-.about-copy .secondary{
-  margin-top:34px;
+.about-copy p + p{
+  margin-top:28px;
 
-  max-width:620px;
+  max-width:610px;
 
   font-size:16px;
   line-height:1.65;
   letter-spacing:0;
+
   color:var(--muted);
 }
 
@@ -312,21 +638,25 @@ img{
 .contact-label{
   margin-bottom:9px;
 
-  font-size:11px;
-  letter-spacing:.14em;
+  font-size:9px;
+  font-weight:600;
+
+  letter-spacing:.16em;
   text-transform:uppercase;
-  color:var(--muted);
+
+  color:var(--muted-dark);
 }
 
 .contact a{
   display:inline-block;
 
-  font-size:15px;
-
-  border-bottom:1px solid var(--rule);
   padding-bottom:4px;
 
-  transition:border-color .18s ease;
+  border-bottom:1px solid var(--rule);
+
+  font-size:14px;
+
+  transition:border-color .2s ease;
 }
 
 .contact a:hover{
@@ -339,21 +669,23 @@ img{
 ---------------------------------- */
 
 .footer{
-  min-height:150px;
+  min-height:140px;
 
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:40px;
+
+  gap:30px;
 
   border-top:1px solid var(--rule);
 
-  font-size:11px;
-  line-height:1.5;
-  letter-spacing:.10em;
+  font-size:9px;
+  font-weight:600;
+
+  letter-spacing:.14em;
   text-transform:uppercase;
 
-  color:var(--muted);
+  color:var(--muted-dark);
 }
 
 .footer-right{
@@ -363,90 +695,122 @@ img{
 
 
 /* ----------------------------------
-   MOBILE
+   RESPONSIVE
 ---------------------------------- */
 
-@media (max-width:800px){
+@media (max-width:900px){
 
   .site{
-    width:min(100% - 40px, var(--max));
+    width:min(var(--max), calc(100% - 48px));
+  }
+
+  .property-body{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+
+  .book-stage{
+    min-height:auto;
+    padding:20px 0 30px;
+  }
+
+  .about-grid{
+    grid-template-columns:
+      100px
+      minmax(0,1fr);
+
+    gap:40px;
+  }
+
+  .contact{
+    grid-column:2;
+    margin-top:20px;
+  }
+
+}
+
+
+@media (max-width:650px){
+
+  .site{
+    width:calc(100% - 36px);
   }
 
   .header{
-    min-height:96px;
+    height:82px;
   }
 
-  .logo{
-    width:170px;
+  .wordmark{
+    font-size:10px;
   }
 
   .nav{
     gap:18px;
-    font-size:10px;
+    font-size:9px;
   }
 
-  .hero{
-    min-height:540px;
-    grid-template-columns:1fr;
-    gap:28px;
-    padding:56px 0 72px;
+  .nav a:nth-child(2){
+    display:none;
   }
 
-  .eyebrow{
-    padding-top:0;
+  .intro{
+    min-height:580px;
+
+    padding:80px 0 100px;
   }
 
-  .section{
-    padding-bottom:80px;
+  .hero-logo{
+    width:260px;
+
+    margin-bottom:54px;
   }
 
-  .section-head{
-    grid-template-columns:1fr;
-    gap:24px;
-    margin-bottom:48px;
+  .intro-copy{
+    font-size:25px;
   }
 
   .property{
-    grid-template-columns:1fr;
-    gap:24px;
-    padding:32px 0 42px;
+    padding-bottom:90px;
   }
 
-  .property-meta{
-    align-self:auto;
+  .property-top{
+    grid-template-columns:1fr;
+    gap:24px;
+
+    margin-bottom:55px;
+  }
+
+  .property-heading{
+    font-size:54px;
+  }
+
+  .property-details{
+    grid-template-columns:1fr;
+    gap:20px;
   }
 
   .about-grid{
     grid-template-columns:1fr;
-    gap:44px;
+    gap:28px;
   }
 
   .contact{
-    align-self:auto;
+    grid-column:auto;
+    margin-top:20px;
   }
 
   .footer{
-    padding:36px 0;
+    padding:35px 0;
+
     min-height:auto;
 
-    align-items:flex-start;
     flex-direction:column;
+    align-items:flex-start;
   }
 
   .footer-right{
     flex-direction:column;
     gap:8px;
-  }
-}
-
-@media (max-width:520px){
-
-  .nav a:not(:last-child){
-    display:none;
-  }
-
-  .hero h1{
-    font-size:48px;
   }
 
 }
@@ -459,20 +823,26 @@ img{
 
 <div class="site">
 
-  <!-- HEADER -->
+
+  <!-- ==================================
+       HEADER
+  =================================== -->
 
   <header class="header">
 
-    <a class="brand" href="#" aria-label="Dark Commercial home">
-      <img
-        class="logo"
-        src="logo.jpg"
-        alt="Dark Commercial"
-      />
+    <a
+      class="wordmark"
+      href="#"
+      aria-label="Dark Commercial home"
+    >
+      Dark Commercial
     </a>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="#work">Work</a>
+    <nav
+      class="nav"
+      aria-label="Primary navigation"
+    >
+      <a href="#properties">Work</a>
       <a href="#about">About</a>
       <a href="mailto:contact@darkcommercial.com">Contact</a>
     </nav>
@@ -480,116 +850,202 @@ img{
   </header>
 
 
-  <!-- HERO -->
 
   <main>
 
-    <section class="hero">
 
-      <div class="eyebrow">
-        Dark Commercial
+    <!-- ==================================
+         INTRO
+    =================================== -->
+
+    <section class="intro">
+
+      <img
+        class="hero-logo"
+        src="logo.jpg"
+        alt="Dark Commercial"
+      />
+
+      <div class="intro-copy">
+
+        Independent studio originating and developing
+        <span class="muted">
+          authored intellectual property.
+        </span>
+
       </div>
 
-      <h1>
-        Independent studio originating and developing
-        <span>authored intellectual property.</span>
-      </h1>
+      <div class="scroll-mark">
+        ↓
+      </div>
 
     </section>
 
 
-    <!-- WORK -->
 
-    <section class="section" id="work">
+    <!-- ==================================
+         PROPERTY 01
+    =================================== -->
 
-      <div class="section-head">
+    <section
+      class="property"
+      id="properties"
+    >
 
-        <div class="section-label">
-          Selected Work
+      <div class="property-top">
+
+        <div class="property-index">
+          01 / Property
         </div>
 
-        <h2 class="section-title">
-          Original properties developed across form and medium.
-        </h2>
+        <h1 class="property-heading">
+          Narrative
+          <span>Forces</span>
+        </h1>
 
       </div>
 
 
-      <article class="property">
+      <div class="property-body">
 
-        <div class="property-number">
-          01
-        </div>
 
-        <div class="property-main">
+        <!-- PROPERTY COPY -->
 
-          <h3>
-            Narrative Forces
-          </h3>
+        <div class="property-copy">
+
+          <div class="kicker">
+            The Narrative Forces Doctrine
+          </div>
+
+          <h2>
+            A doctrine examining the Forces that drive narrative.
+          </h2>
 
           <p>
-            A doctrine examining the Forces that drive narrative,
-            how they change conditions, and where they fail.
+            Narrative Forces identifies how stories change conditions,
+            how those changes accumulate across a narrative, and where
+            the Forces driving them succeed or fail.
           </p>
+
+
+          <div class="property-details">
+
+            <div>
+
+              <div class="detail-label">
+                Author
+              </div>
+
+              <div class="detail-value">
+                A. E. Genovese
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div class="detail-label">
+                Current Volume
+              </div>
+
+              <div class="detail-value">
+                The Laws of Escalation<br />
+                Volume I
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!--
+          When thenarrativeforces.com is ready,
+          uncomment this link.
 
           <a
             class="property-link"
             href="https://www.thenarrativeforces.com"
           >
-            View Property
+            Explore Narrative Forces
           </a>
+          -->
 
         </div>
 
-        <div class="property-meta">
 
-          The Narrative Forces Doctrine<br />
-          A. E. Genovese<br /><br />
 
-          Volume I<br />
-          The Laws of Escalation
+        <!-- TEMPORARY BOOK COVER -->
+
+        <div class="book-stage">
+
+          <div
+            class="book"
+            aria-label="The Laws of Escalation"
+          >
+
+            <div class="book-series">
+              The Narrative Forces Doctrine
+              <br />
+              Volume I
+            </div>
+
+            <div class="book-rule"></div>
+
+            <div class="book-title">
+              The Laws
+              <span class="of">of</span>
+              Escalation
+            </div>
+
+            <div class="book-space"></div>
+
+            <div class="book-author">
+              A. E. Genovese
+            </div>
+
+          </div>
 
         </div>
 
-      </article>
+
+      </div>
 
     </section>
 
 
-    <!-- ABOUT -->
 
-    <section class="section" id="about">
+    <!-- ==================================
+         ABOUT
+    =================================== -->
 
-      <div class="section-head">
+    <section
+      class="about"
+      id="about"
+    >
+
+      <div class="about-grid">
 
         <div class="section-label">
           About
         </div>
 
-        <h2 class="section-title">
-          Dark Commercial
-        </h2>
-
-      </div>
-
-
-      <div class="about-grid">
-
-        <div></div>
 
         <div class="about-copy">
 
           <p>
-            Dark Commercial originates and develops authored
-            intellectual property.
+            Dark Commercial originates and develops
+            authored intellectual property.
           </p>
 
-          <p class="secondary">
-            Work is developed for publication, adaptation,
-            licensing, and application across media.
+          <p>
+            Properties are developed for publication,
+            adaptation, licensing, and application
+            across media.
           </p>
 
         </div>
+
 
         <div class="contact">
 
@@ -607,10 +1063,14 @@ img{
 
     </section>
 
+
   </main>
 
 
-  <!-- FOOTER -->
+
+  <!-- ==================================
+       FOOTER
+  =================================== -->
 
   <footer class="footer">
 
@@ -625,12 +1085,15 @@ img{
 
   </footer>
 
+
 </div>
 
 
 <script>
+
 document.getElementById("year").textContent =
   new Date().getFullYear();
+
 </script>
 
 </body>
