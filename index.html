@@ -139,7 +139,7 @@ a{
 
   width:min(350px, 76vw);
 
-  margin-bottom:38px;
+  margin-bottom:30px;
 }
 
 .hero-logo{
@@ -186,6 +186,10 @@ a{
   font-weight:400;
 }
 
+.intro-line{
+  display:block;
+}
+
 .intro-copy .muted{
   color:var(--muted);
 }
@@ -223,7 +227,7 @@ a{
 
   gap:52px;
 
-  margin-bottom:46px;
+  margin-bottom:42px;
 }
 
 .property-index{
@@ -239,6 +243,8 @@ a{
 
 .property-heading{
   margin:0;
+
+  max-width:900px;
 
   font-size:clamp(38px, 4vw, 58px);
   line-height:1;
@@ -268,40 +274,23 @@ a{
   max-width:760px;
 }
 
-.kicker{
-  margin-bottom:20px;
-
-  font-size:10px;
-  font-weight:600;
-  line-height:1.4;
-  letter-spacing:.18em;
-
-  text-transform:uppercase;
-
-  color:var(--muted);
-}
-
-.property-copy h2{
-  margin:0 0 24px;
-
-  max-width:650px;
-
-  font-size:clamp(25px, 2.5vw, 38px);
-  line-height:1.16;
-  letter-spacing:-.03em;
-
-  font-weight:400;
-}
-
 .property-copy p{
   margin:0;
 
-  max-width:650px;
+  max-width:680px;
 
-  font-size:17px;
-  line-height:1.65;
+  font-size:19px;
+  line-height:1.6;
 
   color:var(--muted);
+}
+
+.property-copy p + p{
+  margin-top:10px;
+}
+
+.property-copy .emphasis{
+  color:var(--ink);
 }
 
 .property-details{
@@ -545,7 +534,7 @@ a{
 
   .hero-logo-wrap{
     width:260px;
-    margin-bottom:34px;
+    margin-bottom:28px;
   }
 
   .intro-copy{
@@ -559,7 +548,7 @@ a{
   .property-top{
     grid-template-columns:1fr;
     gap:22px;
-    margin-bottom:38px;
+    margin-bottom:34px;
   }
 
   .property-heading{
@@ -573,6 +562,10 @@ a{
 
   .property-body > div:first-child{
     display:none;
+  }
+
+  .property-copy p{
+    font-size:17px;
   }
 
   .property-details{
@@ -659,8 +652,11 @@ a{
 
       <div class="intro-copy">
 
-        An independent studio originating and developing
-        <span class="muted">
+        <span class="intro-line">
+          An independent studio originating and developing
+        </span>
+
+        <span class="intro-line muted">
           authored intellectual property.
         </span>
 
@@ -688,7 +684,7 @@ a{
         </div>
 
         <h1 class="property-heading">
-          Narrative Forces
+          The Narrative Forces Doctrine
         </h1>
 
       </div>
@@ -701,18 +697,14 @@ a{
 
         <div class="property-copy">
 
-          <div class="kicker">
-            The Narrative Forces Doctrine
-          </div>
-
-          <h2>
-            An examination of the Forces that drive narrative.
-          </h2>
-
           <p>
-            Stories are shaped by forces that operate beneath plot,
-            character, structure, dialogue, and theme. Narrative Forces
-            identifies and examines them.
+            Most approaches to story examine plot, character,
+            structure, dialogue, and theme.
+          </p>
+
+          <p class="emphasis">
+            Narrative Forces examines the principles that make
+            those elements consequential.
           </p>
 
 
